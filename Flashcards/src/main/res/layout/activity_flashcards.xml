@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:id="@+id/flashcardMain"
+    android:orientation="vertical"
+    android:background="@color/black">
+
+    <!--  Header  -->
+    <LinearLayout
+        android:layout_marginBottom="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="start|center"
+        android:padding="10dp">
+
+        <ImageView
+            android:id="@+id/backBtn"
+            android:layout_width="30dp"
+            android:layout_height="30dp"
+            android:layout_marginEnd="10dp"
+            android:src="@drawable/back">
+        </ImageView>
+
+        <TextView
+            android:text="Flashcards"
+            android:textSize="30sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white">
+        </TextView>
+    </LinearLayout>
+
+    <!--  Add Card  -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="@+id/addButton"
+            android:text="+"
+            app:backgroundTint="@null"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/rounded_border"
+            android:textColor="@color/white"
+            android:textSize="48sp"
+            android:layout_margin="20dp"
+        />
+    </LinearLayout>
+
+    <!--  Label & Shuffle  -->
+    <LinearLayout
+        android:layout_marginTop="10dp"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginHorizontal="20dp"
+        android:gravity="center">
+
+        <TextView
+            android:text="Your Cards"
+            android:textSize="20sp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textColor="@color/white"
+            android:layout_weight="1">
+        </TextView>
+
+        <ImageView
+            android:id="@+id/shuffleBtn"
+            android:src="@drawable/shuffle"
+            android:layout_width="30dp"
+            android:layout_height="30dp">
+        </ImageView>
+
+    </LinearLayout>
+
+    <!--  My Cards  -->
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/recyclerView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+        />
+
+    </LinearLayout>
+
+</LinearLayout>

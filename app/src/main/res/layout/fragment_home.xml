@@ -1,0 +1,363 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#9191BB"
+    android:padding="20dp">
+
+    <!--header-->
+    <LinearLayout
+        android:id="@+id/header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="start"
+        android:orientation="vertical"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Good Morning, User!"
+            android:textColor="@color/white"
+            android:textSize="31dp" />
+
+        <TextView
+            android:id="@+id/dateField"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Tuesday, April 4"
+            android:textColor="@color/white"
+            android:textSize="20dp" />
+    </LinearLayout>
+
+    <!--  Status  -->
+    <LinearLayout
+        android:padding="16dp"
+        android:layout_marginTop="32dp"
+        android:id="@+id/overviewCards"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/white"
+        android:background="@drawable/bg_round"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/header">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="#82F277"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_notes" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/activeNotes"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 active Notebooks"
+                    android:textColor="@color/black"
+                />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="20dp"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="#AB72BE"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/ic_home_planner" />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 tasks this week"
+                    android:textColor="@color/black"
+                />
+
+            </LinearLayout>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:background="@drawable/bg_round"
+            android:backgroundTint="#CCB567"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="8dp">
+
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="59dp"
+                android:src="@drawable/ic_home_flashcards"
+             />
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 Decks To Review"
+                    android:textColor="@color/black"
+                />
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <!--  Features  -->
+    <LinearLayout
+        android:id="@+id/actionButtons"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/overviewCards">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:id="@+id/buttonAddNote"
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#D9D9D9"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="#a8ceba"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Add Note"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#D9D9D9"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/makeFlashcardBtn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:src="@drawable/ic_create_flashcards" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Create Flashcards"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="55dp"
+                android:layout_height="55dp"
+                android:layout_weight="1"
+                android:background="@drawable/bg_circle"
+                android:backgroundTint="#D9D9D9"
+                android:gravity="center">
+
+                <LinearLayout
+                    android:layout_width="35dp"
+                    android:layout_height="35dp"
+                    android:background="@drawable/bg_circle"
+                    android:backgroundTint="#a8ceba"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:src="@drawable/ic_plus" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="New Task"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:id="@+id/pomodoro"
+                android:layout_width="wrap_content"
+                android:layout_height="55dp"
+                android:clickable="true"
+                android:contentDescription="pomodoro"
+                android:focusable="true"
+                android:src="@drawable/ic_pomodoro" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:text="Start Pomodoro"
+                android:textAlignment="center"
+                android:textSize="12sp"
+                android:textColor="@color/white"/>
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!--  Schedule  -->
+    <LinearLayout
+        android:id="@+id/schedule"
+        android:layout_marginTop="32dp"
+        android:backgroundTint="#D9D9D9"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/actionButtons">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Today's Schedule"
+                android:textColor="@color/black"
+            />
+
+            <Button
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:backgroundTint="#F6DBDB"
+                android:text="View Calendar"
+                android:textColor="@color/black"
+            />
+
+        </LinearLayout>
+    </LinearLayout>
+
+    <LinearLayout
+        android:padding="10dp"
+        android:layout_marginTop="32dp"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/bg_round"
+        android:backgroundTint="#CFB3B3"
+        app:layout_constraintTop_toBottomOf="@id/schedule">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="start"
+                android:text="Pinned Notebooks"
+                android:textColor="@color/black"/>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:padding="5dp"
+                android:text="Flashcards Needing Review"
+                android:textColor="@color/black"/>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
