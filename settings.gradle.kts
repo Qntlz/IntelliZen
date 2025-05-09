@@ -23,3 +23,4 @@ rootProject.name = "MindVault"
 include(":app")
 include(":Flashcards")
 include(":Notes")
+include(":Pomodoro")
