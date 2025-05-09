@@ -18,9 +18,6 @@ import java.util.Date;
 import java.util.Locale;
 
 public class HomeFragment extends Fragment {
-    private TextView activeNotes;
-    private LinearLayout addNote;
-    private ImageView pomodoro, makeFlashcard;
 
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         return inflater.inflate(R.layout.fragment_home, container, false);
@@ -33,7 +30,7 @@ public class HomeFragment extends Fragment {
         // Retrieves Current Date
         showTodayDate(root);
 
-//      Opens the Add Flashcard window
+        //  Opens the Add Flashcard window
         root.findViewById(R.id.makeFlashcardBtn)
                 .setOnClickListener(v ->
                         startActivity(new Intent(
@@ -41,16 +38,16 @@ public class HomeFragment extends Fragment {
                                 com.cerenio.flashcards.AddFlashcardActivity.class
                         ))
                 );
+        //  Opens the Add Note window
+        root.findViewById(R.id.addNoteBtn)
+                .setOnClickListener(v ->
+                        startActivity(new Intent(
+                                requireContext(),
+                                com.cerenio.notes.CreateNoteActivity.class
+                        ))
+                );
     }
 
-    private void openFragment(Fragment f) {
-        requireActivity()
-                .getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, f)
-                .addToBackStack(null)
-                .commit();
-    }
     private void showTodayDate(View root) {
         TextView dateField = root.findViewById(R.id.dateField);
         // format: full weekday name, full month name, day-of-month

@@ -162,7 +162,6 @@
             android:orientation="vertical">
 
             <LinearLayout
-                android:id="@+id/buttonAddNote"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"
@@ -178,6 +177,7 @@
                     android:gravity="center">
 
                     <ImageView
+                        android:id="@+id/addNoteBtn"
                         android:layout_width="wrap_content"
                         android:layout_height="wrap_content"
                         android:src="@drawable/ic_plus" />
