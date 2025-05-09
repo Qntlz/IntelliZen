@@ -2,6 +2,8 @@ package com.cerenio.flashcards;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.LinearLayout;
 import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
@@ -23,6 +25,8 @@ import java.util.concurrent.Executors;
 public class FlashcardsActivity extends AppCompatActivity {
     private FlashcardAdapter adapter;
     private List<Flashcard> allFlashcards = new ArrayList<>();
+    private LinearLayout emptyState;
+    private LinearLayout recyclerCard;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -35,8 +39,10 @@ public class FlashcardsActivity extends AppCompatActivity {
             return insets;
         });
 
-        // Link the recycler view
+        // Initialize views
         RecyclerView recyclerView = findViewById(R.id.recyclerView);
+        emptyState = findViewById(R.id.emptyState);
+        recyclerCard = findViewById(R.id.recyclerCard);
 
         // Set the recycler view to have an Linear Layout
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
@@ -51,6 +57,15 @@ public class FlashcardsActivity extends AppCompatActivity {
             allFlashcards = flashcards;
             adapter.setFlashcards(flashcards);
             adapter.notifyDataSetChanged();
+
+            // Toggle visibility based on flashcards list
+            if (flashcards.isEmpty()) {
+                emptyState.setVisibility(View.VISIBLE);
+                recyclerCard.setVisibility(View.GONE);
+            } else {
+                emptyState.setVisibility(View.GONE);
+                recyclerCard.setVisibility(View.VISIBLE);
+            }
         });
 
         // Set the addButton to redirect to the AddFlashCard Page
