@@ -1,6 +1,7 @@
 package com.cerenio.flashcards;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.LinearLayout;
@@ -10,9 +11,12 @@ import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.app.NavUtils;
+import androidx.core.content.ContextCompat;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
+import androidx.core.view.WindowCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
@@ -32,7 +36,21 @@ public class FlashcardsActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
+
+        // Status Bar Theme
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg_color));  // or any color
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            insetsController.setAppearanceLightStatusBars(false); // light icons for dark mode
+        } else {
+            insetsController.setAppearanceLightStatusBars(true);  // dark icons for light mode
+        }
+
         setContentView(R.layout.activity_flashcards);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.flashcardMain), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
@@ -90,6 +108,7 @@ public class FlashcardsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
+        // Go back to Home
         findViewById(R.id.backBtn).setOnClickListener(v ->
                 NavUtils.navigateUpFromSameTask(FlashcardsActivity.this)
         );

@@ -10,7 +10,7 @@
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/Theme.MindVault"
+        android:theme="@style/Base.Theme.MindVaultOtin"
         tools:targetApi="31">
         <activity
             android:name=".MainActivity"
@@ -20,6 +20,15 @@
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name="com.cerenio.flashcards.FlashcardsActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name="com.cerenio.notes.NotesActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
+        <activity android:name="com.cerenio.pomodoro.PomodoroActivity"
+            android:parentActivityName=".MainActivity">
         </activity>
     </application>
 

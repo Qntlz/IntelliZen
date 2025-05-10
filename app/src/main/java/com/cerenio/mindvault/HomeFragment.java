@@ -6,8 +6,6 @@ import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-import android.widget.LinearLayout;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -44,6 +42,15 @@ public class HomeFragment extends Fragment {
                         startActivity(new Intent(
                                 requireContext(),
                                 com.cerenio.notes.CreateNoteActivity.class
+                        ))
+                );
+
+        //  Opens the Pomodoro window
+        root.findViewById(R.id.pomodoro)
+                .setOnClickListener(v ->
+                        startActivity(new Intent(
+                                requireContext(),
+                                com.cerenio.pomodoro.PomodoroActivity.class
                         ))
                 );
     }

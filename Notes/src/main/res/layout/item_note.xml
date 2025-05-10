@@ -4,8 +4,8 @@
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:minHeight="160dp"
-    android:background="@drawable/bg_round"
-    android:layout_margin="12dp">
+    android:layout_margin="12dp"
+    android:background="@drawable/rounded_border">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -15,7 +15,8 @@
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="wrap_content">
+            android:layout_height="wrap_content"
+            android:gravity="center">
 
             <TextView
                 android:id="@+id/textNoteTitle"
@@ -23,18 +24,18 @@
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
                 android:text="Title"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textStyle="bold"
                 android:maxLines="2"
                 android:ellipsize="end"
-                android:textSize="18sp" />
+                android:textSize="24sp" />
 
             <ImageView
                 android:id="@+id/buttonDelete"
                 android:layout_width="22dp"
                 android:layout_height="22dp"
                 android:src="@drawable/ic_trash_can"
-                app:tint="@color/white" />
+                app:tint="@color/text_color" />
         </LinearLayout>
 
         <TextView
@@ -42,7 +43,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Content"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color"
             android:textSize="12sp"
             android:maxLines="8"
             android:ellipsize="end"

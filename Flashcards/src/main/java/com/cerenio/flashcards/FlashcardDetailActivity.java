@@ -3,6 +3,7 @@ package com.cerenio.flashcards;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -12,8 +13,12 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import java.util.List;
 import java.util.concurrent.Executors;
@@ -30,6 +35,21 @@ public class FlashcardDetailActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        // Status Bar
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg_color));  // or any color
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            insetsController.setAppearanceLightStatusBars(false); // light icons for dark mode
+        } else {
+            insetsController.setAppearanceLightStatusBars(true);  // dark icons for light mode
+        }
+
         setContentView(R.layout.activity_flashcard_detail);
 
         // Get data from intent

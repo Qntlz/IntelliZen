@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+
+    <!-- transparent fill so your black background shows through -->
+    <solid android:color="@android:color/transparent"/>
+
+    <!-- 1px white stroke -->
+    <stroke
+        android:width="1dp"
+        android:color="@color/white"/>
+
+    <!-- corners radius -->
+    <corners android:radius="8dp"/>
+
+    <!-- optional padding inside the box -->
+    <padding
+        android:left="16dp"
+        android:top="16dp"
+        android:right="16dp"
+        android:bottom="16dp"/>
+</shape>

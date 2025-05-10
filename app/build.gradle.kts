@@ -34,6 +34,7 @@ android {
 dependencies {
     implementation(project(":Flashcards"))
     implementation(project(":Notes"))
+    implementation(project(":Pomodoro"))
     implementation(libs.appcompat)
     implementation(libs.material)
     implementation(libs.activity)

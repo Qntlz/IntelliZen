@@ -1,6 +1,7 @@
 package com.cerenio.notes;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -10,6 +11,10 @@ import androidx.activity.result.ActivityResultLauncher;
 import androidx.activity.result.contract.ActivityResultContracts;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -28,6 +33,20 @@ public class NotesActivity extends AppCompatActivity implements NoteAdapter.OnIt
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_notes);
 
+        // Status Bar
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg_color));  // or any color
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
+            insetsController.setAppearanceLightStatusBars(false); // light icons for dark mode
+        } else {
+            insetsController.setAppearanceLightStatusBars(true);  // dark icons for light mode
+        }
+
         db = AppDatabase.getInstance(this);
         adapter = new NoteAdapter(this);
 
@@ -42,7 +61,9 @@ public class NotesActivity extends AppCompatActivity implements NoteAdapter.OnIt
         fab.setOnClickListener(v -> openCreate(null));
 
         // Set the backButton to redirect to the Main Page
-        findViewById(R.id.backBtn).setOnClickListener(v -> finish());
+        findViewById(R.id.backBtn).setOnClickListener(v ->
+                NavUtils.navigateUpFromSameTask(NotesActivity.this)
+        );
 
         loadNotes();
     }
