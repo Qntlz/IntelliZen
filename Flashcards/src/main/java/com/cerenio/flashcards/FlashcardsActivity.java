@@ -9,6 +9,7 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.NavUtils;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
@@ -89,8 +90,10 @@ public class FlashcardsActivity extends AppCompatActivity {
             startActivity(intent);
         });
 
-        // Set the backButton to redirect to the Main Page
-        findViewById(R.id.backBtn).setOnClickListener(v -> finish());
+        findViewById(R.id.backBtn).setOnClickListener(v ->
+                NavUtils.navigateUpFromSameTask(FlashcardsActivity.this)
+        );
+
 
         // **SWIPE TO DELETE**
         new ItemTouchHelper(new ItemTouchHelper.SimpleCallback(

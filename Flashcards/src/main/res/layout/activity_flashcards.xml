@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:id="@+id/flashcardMain"
     android:orientation="vertical"
-    android:background="#222222">
+    android:background="@color/bg_color">
 
     <!--  Header  -->
     <LinearLayout
@@ -20,7 +20,8 @@
             android:layout_width="30dp"
             android:layout_height="30dp"
             android:layout_marginEnd="10dp"
-            android:src="@drawable/back">
+            android:src="@drawable/back"
+            app:tint="@color/text_color">
         </ImageView>
 
         <TextView
@@ -28,7 +29,7 @@
             android:textSize="30sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white">
+            android:textColor="@color/text_color">
         </TextView>
     </LinearLayout>
 
@@ -44,7 +45,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:background="@drawable/rounded_border"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color"
             android:textSize="48sp"
             android:layout_margin="20dp"
         />
@@ -64,7 +65,7 @@
             android:textSize="20sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:textColor="@color/white"
+            android:textColor="@color/text_color"
             android:layout_weight="1">
         </TextView>
 
@@ -72,7 +73,8 @@
             android:id="@+id/shuffleBtn"
             android:src="@drawable/shuffle"
             android:layout_width="30dp"
-            android:layout_height="30dp">
+            android:layout_height="30dp"
+            app:tint="@color/text_color">
         </ImageView>
 
     </LinearLayout>
@@ -97,7 +99,7 @@
                 android:layout_width="300dp"
                 android:layout_height="300dp"
                 app:srcCompat="@drawable/flashcard"
-                app:tint="@color/white"
+                app:tint="@color/text_color"
                 android:translationX="-15dp"
             />
 
@@ -105,7 +107,7 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:text="Create Your First Card!"
-                android:textColor="@color/white"
+                android:textColor="@color/text_color"
                 android:textSize="18sp"
             />
         </LinearLayout>
@@ -114,7 +116,7 @@
 
     <!--  My Cards  -->
     <LinearLayout
-        android:padding="10dp"
+        android:paddingHorizontal="20dp"
         android:id="@+id/recyclerCard"
         android:visibility="gone"
         android:layout_width="match_parent"
@@ -126,7 +128,6 @@
             android:layout_height="wrap_content"
             android:layout_marginTop="10dp"
         />
-
     </LinearLayout>
 
 </LinearLayout>
