@@ -53,6 +53,15 @@ public class HomeFragment extends Fragment {
                                 com.cerenio.pomodoro.PomodoroActivity.class
                         ))
                 );
+
+        //  Opens the Create Task window
+        root.findViewById(R.id.newTaskBtn)
+                .setOnClickListener(v ->
+                        startActivity(new Intent(
+                                requireContext(),
+                                com.cerenio.planner.TaskCreationActivity.class
+                        ))
+                );
     }
 
     private void showTodayDate(View root) {

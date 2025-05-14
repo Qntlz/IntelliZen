@@ -45,11 +45,8 @@ public class FlashcardsActivity extends AppCompatActivity {
         WindowInsetsControllerCompat insetsController =
                 WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
 
-        if (nightModeFlags == Configuration.UI_MODE_NIGHT_YES) {
-            insetsController.setAppearanceLightStatusBars(false); // light icons for dark mode
-        } else {
-            insetsController.setAppearanceLightStatusBars(true);  // dark icons for light mode
-        }
+        // dark icons for light mode
+        insetsController.setAppearanceLightStatusBars(nightModeFlags != Configuration.UI_MODE_NIGHT_YES); // light icons for dark mode
 
         setContentView(R.layout.activity_flashcards);
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.flashcardMain), (v, insets) -> {

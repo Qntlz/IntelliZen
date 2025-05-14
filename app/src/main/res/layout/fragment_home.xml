@@ -233,6 +233,7 @@
             android:orientation="vertical">
 
             <LinearLayout
+                android:id="@+id/newTaskBtn"
                 android:layout_width="55dp"
                 android:layout_height="55dp"
                 android:layout_weight="1"

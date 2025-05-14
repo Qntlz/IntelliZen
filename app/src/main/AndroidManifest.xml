@@ -30,6 +30,9 @@
         <activity android:name="com.cerenio.pomodoro.PomodoroActivity"
             android:parentActivityName=".MainActivity">
         </activity>
+        <activity android:name="com.cerenio.planner.PlannerActivity"
+            android:parentActivityName=".MainActivity">
+        </activity>
     </application>
 
 </manifest>

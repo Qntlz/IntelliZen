@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">MindVault</string>
+    <string-array name="filter_options">
+        <item>Show All</item>
+        <item>Completed</item>
+        <item>Ongoing</item>
+    </string-array>
+</resources>

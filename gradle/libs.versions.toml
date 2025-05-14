@@ -1,5 +1,7 @@
 [versions]
 agp = "8.8.0"
+githubMaterialCalendarview = "2.0.1"
+githubMaterialCalendarviewVersion = "2.0.0"
 junit = "4.13.2"
 junitVersion = "1.2.1"
 espressoCore = "3.6.1"
@@ -7,9 +9,13 @@ appcompat = "1.7.0"
 material = "1.12.0"
 activity = "1.10.1"
 constraintlayout = "2.2.1"
+materialCalendarview = "1.4.3"
+materialCalendarviewVersion = "2.0.0-alpha05"
 roomCompiler = "2.7.1"
 roomCommonJvm = "2.7.1"
+roomCompilerVersion = "2.4.2"
 roomRuntimeAndroid = "2.7.1"
+coordinatorlayout = "1.3.0"
 
 [libraries]
 junit = { group = "junit", name = "junit", version.ref = "junit" }
@@ -19,9 +25,16 @@ appcompat = { group = "androidx.appcompat", name = "appcompat", version.ref = "a
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 activity = { group = "androidx.activity", name = "activity", version.ref = "activity" }
 constraintlayout = { group = "androidx.constraintlayout", name = "constraintlayout", version.ref = "constraintlayout" }
+material-calendarview = { module = "com.prolificinteractive:material-calendarview", version.ref = "materialCalendarview" }
+material-calendarview-v200 = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "githubMaterialCalendarviewVersion" }
+material-calendarview-v201 = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "githubMaterialCalendarview" }
+prolificinteractive-material-calendarview = { module = "com.github.prolificinteractive:material-calendarview", version.ref = "materialCalendarviewVersion" }
 room-compiler = { group = "androidx.room", name = "room-compiler", version.ref = "roomCompiler" }
 room-common-jvm = { group = "androidx.room", name = "room-common-jvm", version.ref = "roomCommonJvm" }
+room-compiler-v242 = { module = "androidx.room:room-compiler", version.ref = "roomCompilerVersion" }
+room-runtime = { module = "androidx.room:room-runtime", version.ref = "roomCompiler" }
 room-runtime-android = { group = "androidx.room", name = "room-runtime-android", version.ref = "roomRuntimeAndroid" }
+coordinatorlayout = { group = "androidx.coordinatorlayout", name = "coordinatorlayout", version.ref = "coordinatorlayout" }
 
 [plugins]
 android-application = { id = "com.android.application", version.ref = "agp" }

@@ -15,6 +15,7 @@ import androidx.fragment.app.Fragment;
 
 import com.cerenio.flashcards.FlashcardsActivity;
 import com.cerenio.notes.NotesActivity;
+import com.cerenio.planner.PlannerActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -41,14 +42,23 @@ public class MainActivity extends AppCompatActivity {
         navFlashcards = findViewById(R.id.navFlashcards);
         navProfile = findViewById(R.id.navProfile);
 
+        // Opens Flashcard Window
         navFlashcards.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, FlashcardsActivity.class));
         });
 
+        // Opens Notes Window
         navNotes.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, NotesActivity.class));
         });
 
+        // Opens Planner Window
+        navPlanner.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, PlannerActivity.class));
+        });
+
+
+        // Loads Home Fragment
         loadFragment(new HomeFragment());
     }
 
