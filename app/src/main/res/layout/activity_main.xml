@@ -20,7 +20,7 @@
         android:id="@+id/bottomNav"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="#DECDCD"
+        android:background="@color/bg_color"
         android:paddingTop="6dp"
         android:paddingBottom="6dp"
         app:layout_constraintBottom_toBottomOf="parent">
@@ -37,12 +37,13 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:tint="@color/text_color"
                 android:src="@drawable/ic_home" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:text="Home"/>
         </LinearLayout>
 
@@ -58,12 +59,13 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:tint="@color/text_color"
                 android:src="@drawable/ic_notes" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:text="Notes" />
         </LinearLayout>
 
@@ -79,12 +81,13 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:tint="@color/text_color"
                 android:src="@drawable/ic_planner" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:text="Planner" />
         </LinearLayout>
 
@@ -100,12 +103,13 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:tint="@color/text_color"
                 android:src="@drawable/ic_flashcard" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:text="Flashcards" />
         </LinearLayout>
 
@@ -121,12 +125,13 @@
             <ImageView
                 android:layout_width="30dp"
                 android:layout_height="30dp"
+                app:tint="@color/text_color"
                 android:src="@drawable/ic_profile" />
 
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:textColor="@color/black"
+                android:textColor="@color/text_color"
                 android:text="Profile" />
         </LinearLayout>
     </LinearLayout>
