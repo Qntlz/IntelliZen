@@ -71,56 +71,16 @@
         android:layout_marginTop="24dp"
         app:cardCornerRadius="12dp"
         app:cardElevation="4dp"
-        android:background="#FFFFFF"
+        android:background="@color/bg_color"
         app:layout_constraintTop_toBottomOf="@id/subtitle"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent">
 
         <LinearLayout
             android:layout_width="match_parent"
-            android:layout_height="606dp"
+            android:layout_height="480dp"
             android:orientation="vertical"
             android:padding="24dp">
-
-            <!-- Tab buttons container -->
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="40dp"
-                android:layout_marginBottom="24dp"
-                android:background="#F9FAFB"
-                android:backgroundTint="#F9FAFB"
-                android:backgroundTintMode="src_over"
-                android:clipChildren="false"
-                android:clipToPadding="false"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <Button
-                    android:id="@+id/btn_login"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif-medium"
-                    android:padding="0dp"
-                    android:text="Log In"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:textStyle="bold"
-                    android:backgroundTint="#2563EB"
-                    tools:ignore="HardcodedText" />
-
-                <Button
-                    android:id="@+id/btn_signup"
-                    android:layout_width="0dp"
-                    android:layout_height="match_parent"
-                    android:layout_weight="1"
-                    android:fontFamily="sans-serif"
-                    android:padding="0dp"
-                    android:text="Sign Up"
-                    android:textColor="@color/white"
-                    android:textSize="14sp"
-                    android:backgroundTint="#2563EB"/>
-            </LinearLayout>
 
             <!-- Email label -->
             <TextView
@@ -130,8 +90,10 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif"
                 android:text="Email"
-                android:textColor="#6B7280"
-                android:textSize="12sp" />
+                android:textColor="@color/text_color"
+                android:textSize="12sp"
+                android:textStyle="bold"
+            />
 
             <!-- Email input -->
             <EditText
@@ -140,10 +102,11 @@
                 android:layout_height="40dp"
                 android:fontFamily="sans-serif"
                 android:inputType="textEmailAddress"
-                android:paddingStart="12dp"
                 android:paddingEnd="12dp"
-                android:textColor="#111827"
-                android:textSize="14sp" />
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="14sp"
+                android:backgroundTint="@color/text_color" />
 
             <!-- Password label -->
             <TextView
@@ -154,8 +117,10 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif"
                 android:text="Password"
-                android:textColor="#6B7280"
-                android:textSize="12sp" />
+                android:textColor="@color/text_color"
+                android:textSize="12sp"
+                android:textStyle="bold"
+            />
 
             <!-- Password input with eye icon -->
             <RelativeLayout
@@ -168,24 +133,21 @@
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
                     android:inputType="textPassword"
-                    android:paddingStart="12dp"
                     android:paddingEnd="40dp"
-                    android:textColor="#111827"
-                    android:textSize="14sp" />
+                    android:textColor="@color/text_color"
+                    android:textSize="14sp"
+                    android:backgroundTint="@color/text_color"/>
 
                 <ImageButton
                     android:id="@+id/toggle_password_visibility"
                     android:layout_width="24dp"
                     android:layout_height="24dp"
                     android:layout_alignParentEnd="true"
-                    android:layout_margin="5dp"
-                    android:layout_marginStart="5dp"
-                    android:layout_marginEnd="5dp"
                     android:background="@android:color/transparent"
                     android:contentDescription="Toggle password visibility"
                     android:padding="0dp"
                     android:src="@drawable/ic_eye_slash"
-                    app:tint="#9CA3AF" />
+                    app:tint="@color/text_color" />
             </RelativeLayout>
 
             <!-- Remember me and forgot password -->
@@ -194,30 +156,30 @@
                 android:layout_height="wrap_content"
                 android:layout_marginTop="16dp"
                 android:gravity="center_vertical"
-                android:orientation="horizontal"
-                android:weightSum="2">
-
-                <CheckBox
-                    android:id="@+id/remember_me"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:buttonTint="#3B82F6"
-                    android:fontFamily="sans-serif"
-                    android:text="Remember me"
-                    android:textColor="#6B7280"
-                    android:textSize="12sp" />
+                android:orientation="horizontal">
 
                 <TextView
                     android:id="@+id/forgot_password"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1"
                     android:fontFamily="sans-serif-medium"
                     android:gravity="end"
                     android:text="Forgot Password ?"
-                    android:textColor="#2563EB"
-                    android:textSize="12sp" />
+                    android:textColor="@color/navy_blue"
+                    android:textSize="12sp"
+                />
+
+                <TextView
+                    android:id="@+id/signUp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-medium"
+                    android:gravity="end"
+                    android:text="Sign Up"
+                    android:textColor="@color/navy_blue"
+                    android:textSize="12sp"
+                    android:layout_weight="1"
+                />
             </LinearLayout>
 
             <!-- Log In button -->
@@ -256,7 +218,7 @@
                     android:layout_marginEnd="8dp"
                     android:fontFamily="sans-serif"
                     android:text="Or"
-                    android:textColor="#9CA3AF"
+                    android:textColor="@color/navy_blue"
                     android:textSize="12sp" />
 
                 <View
@@ -266,36 +228,43 @@
                     android:background="#E5E7EB" />
             </LinearLayout>
 
-            <!-- Continue with Google button -->
-            <Button
-                android:id="@+id/google_button"
+            <!-- Additional Sign Up Options -->
+            <LinearLayout
+                android:layout_marginTop="32dp"
+                android:orientation="horizontal"
                 android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:layout_marginBottom="16dp"
-                android:drawableEnd="@drawable/ic_google"
-                android:drawablePadding="8dp"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical"
-                android:text="Continue with Google"
-                android:textColor="@color/white"
-                android:backgroundTint="#2563EB"
-                android:textSize="14sp" />
+                android:layout_height="wrap_content">
 
-            <!-- Continue with Facebook button -->
-            <Button
-                android:id="@+id/facebook_button"
-                android:layout_width="match_parent"
-                android:layout_height="44dp"
-                android:drawablePadding="8dp"
-                android:drawableEnd="@drawable/ic_facebook"
-                android:fontFamily="sans-serif-medium"
-                android:gravity="center_vertical"
-                android:text="Continue with Facebook"
-                android:textColor="@color/white"
-                android:backgroundTint="#2563EB"
-                android:textSize="14sp" />
+                <!-- Google -->
+                <ImageView
+                    android:id="@+id/googleIcon"
+                    android:src="@drawable/google"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                />
+
+                <!-- FB -->
+                <ImageView
+                    android:id="@+id/fbIcon"
+                    android:src="@drawable/facebook"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                />
+
+                <!-- WhatsApp -->
+                <ImageView
+                    android:id="@+id/whappIcon"
+                    android:src="@drawable/whatsapp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp"
+                    android:layout_weight="1"
+                    />
+            </LinearLayout>
 
         </LinearLayout>
+
     </androidx.cardview.widget.CardView>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

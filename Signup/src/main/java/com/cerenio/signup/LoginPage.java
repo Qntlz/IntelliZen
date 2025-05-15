@@ -1,6 +1,7 @@
 package com.cerenio.signup;
 
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import java.util.concurrent.Executors;
 
@@ -19,8 +23,8 @@ public class LoginPage extends AppCompatActivity {
     private EditText emailInput, passwordInput;
     private ImageButton togglePasswordVisibility;
     private CheckBox rememberMe;
-    private TextView forgotPassword;
-    private Button tabLogin, tabSignUp, loginButton, googleButton, facebookButton;
+    private TextView forgotPassword, signUp;
+    private Button loginButton;
     private boolean isPasswordVisible = false;
 
     @Override
@@ -28,26 +32,28 @@ public class LoginPage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_login_page);
 
+        // Status Bar
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg_color));  // or any color
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+        // dark icons for light mode
+        insetsController.setAppearanceLightStatusBars(nightModeFlags != Configuration.UI_MODE_NIGHT_YES); // light icons for dark mode
+
         // Bind views
         emailInput               = findViewById(R.id.email_input);
         passwordInput            = findViewById(R.id.password_input);
         togglePasswordVisibility = findViewById(R.id.toggle_password_visibility);
-        rememberMe               = findViewById(R.id.remember_me);
         forgotPassword           = findViewById(R.id.forgot_password);
+        loginButton              = findViewById(R.id.login_button);
+        signUp                   = findViewById(R.id.signUp);
 
-        tabLogin      = findViewById(R.id.btn_login);
-        tabSignUp     = findViewById(R.id.btn_signup);
-        loginButton   = findViewById(R.id.login_button);
-        googleButton  = findViewById(R.id.google_button);
-        facebookButton= findViewById(R.id.facebook_button);
 
-        // Tab “Log In” (default)
-        tabLogin.setOnClickListener(v -> {
-            // already here
-        });
-
-        // Tab “Sign Up”
-        tabSignUp.setOnClickListener(v ->
+        // Redirect to Sign Up Page
+        signUp.setOnClickListener(v ->
                 startActivity(new Intent(LoginPage.this, SignUpPage.class))
         );
 
@@ -72,7 +78,7 @@ public class LoginPage extends AppCompatActivity {
 
         // “Forgot Password?”
         forgotPassword.setOnClickListener(v ->
-                Toast.makeText(this, "In Progress Feature", Toast.LENGTH_SHORT).show()
+                startActivity(new Intent(LoginPage.this, ForgotPasswordPage.class))
         );
 
         // “Log In” button ⇒ authenticate via Room
@@ -102,14 +108,6 @@ public class LoginPage extends AppCompatActivity {
                 });
             });
         });
-
-        // Social buttons (stubs)
-        googleButton.setOnClickListener(v ->
-                Toast.makeText(this, "Google Sign-In tapped", Toast.LENGTH_SHORT).show()
-        );
-        facebookButton.setOnClickListener(v ->
-                Toast.makeText(this, "Facebook Login tapped", Toast.LENGTH_SHORT).show()
-        );
     }
 }
 

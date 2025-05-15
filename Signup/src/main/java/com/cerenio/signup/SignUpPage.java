@@ -2,6 +2,7 @@ package com.cerenio.signup;
 
 import android.app.DatePickerDialog;
 import android.content.Intent;
+import android.content.res.Configuration;
 import android.os.Bundle;
 import android.text.InputType;
 import android.widget.Button;
@@ -11,6 +12,9 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.content.ContextCompat;
+import androidx.core.view.WindowCompat;
+import androidx.core.view.WindowInsetsControllerCompat;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -29,6 +33,17 @@ public class SignUpPage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_up_page);
+
+        // Status Bar
+        getWindow().setStatusBarColor(ContextCompat.getColor(this, R.color.bg_color));  // or any color
+        int nightModeFlags =
+                getResources().getConfiguration().uiMode & Configuration.UI_MODE_NIGHT_MASK;
+
+        WindowInsetsControllerCompat insetsController =
+                WindowCompat.getInsetsController(getWindow(), getWindow().getDecorView());
+
+        // dark icons for light mode
+        insetsController.setAppearanceLightStatusBars(nightModeFlags != Configuration.UI_MODE_NIGHT_YES); // light icons for dark mode
 
 
         // Bind views

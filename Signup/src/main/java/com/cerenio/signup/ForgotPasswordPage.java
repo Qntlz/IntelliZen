@@ -2,7 +2,9 @@ package com.cerenio.signup;
 
 import android.os.Bundle;
 import android.text.InputType;
+import android.text.method.HideReturnsTransformationMethod;
 import android.text.method.PasswordTransformationMethod;
+import android.util.Patterns;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
@@ -17,104 +19,83 @@ import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
 import java.text.BreakIterator;
+import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
 public class ForgotPasswordPage extends AppCompatActivity {
 
-    private EditText password1, password2;
-    private ImageView toggle1, toggle2;
-    private boolean isPassword1Visible = false, isPassword2Visible = false;
-    private BreakIterator emailInput;
+    private EditText emailInput, password1, password2;
+    private Button submitButton;
+    private ImageView backButton;
+    private final ExecutorService executor = Executors.newSingleThreadExecutor();
+    private UserDao userDao;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.activity_forgot_password_page);
 
-        // 1) Apply window insets
-        ViewCompat.setOnApplyWindowInsetsListener(
-                findViewById(R.id.forgotpass_layout),
-                (v, insets) -> {
-                    Insets sys = insets.getInsets(WindowInsetsCompat.Type.systemBars());
-                    v.setPadding(sys.left, sys.top, sys.right, sys.bottom);
-                    return insets;
-                }
-        );
+        // bind views
+        emailInput   = findViewById(R.id.emailInput);
+        password1    = findViewById(R.id.password1);
+        password2    = findViewById(R.id.password2);
+        backButton   = findViewById(R.id.backButton);
+        submitButton = findViewById(R.id.submitButton);
 
-        // 2) Back button
-        ImageButton backButton = findViewById(R.id.backButton);
-        backButton.setOnClickListener(v -> finish());
+        // setup database
+        userDao = AppDatabase.getInstance(getApplication()).userDao();
 
-        // 3) Enable the two password fields
-        password1 = findViewById(R.id.password1);
-        password2 = findViewById(R.id.password2);
+        // enable fields
         enablePasswordField(password1);
         enablePasswordField(password2);
+        emailInput.setInputType(InputType.TYPE_TEXT_VARIATION_EMAIL_ADDRESS);
 
-        // 4) Locate each eye-slash icon by walking the view hierarchy
-        LinearLayout inputContainer = findViewById(R.id.inputContainer);
-        LinearLayout row1 = (LinearLayout) inputContainer.getChildAt(0);
-        LinearLayout row2 = (LinearLayout) inputContainer.getChildAt(1);
-        toggle1 = (ImageView) row1.getChildAt(2);
-        toggle2 = (ImageView) row2.getChildAt(2);
+        // back action
+        backButton.setOnClickListener(v -> finish());
 
-        // 5) Toggle logic for field 1
-        toggle1.setOnClickListener(v -> {
-            if (isPassword1Visible) {
-                // hide
-                password1.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                toggle1.setImageResource(R.drawable.ic_eye_slash);
-            } else {
-                // show
-                password1.setTransformationMethod(null);
-                toggle1.setImageResource(R.drawable.ic_eye_slash);
-            }
-            // keep cursor at end
-            password1.setSelection(password1.getText().length());
-            isPassword1Visible = !isPassword1Visible;
-        });
+        // submit action
+        submitButton.setOnClickListener(v -> handleSubmit());
+    }
 
-        // 6) Toggle logic for field 2
-        toggle2.setOnClickListener(v -> {
-            if (isPassword2Visible) {
-                password2.setTransformationMethod(PasswordTransformationMethod.getInstance());
-                toggle2.setImageResource(R.drawable.ic_eye_slash);
-            } else {
-                password2.setTransformationMethod(null);
-                toggle2.setImageResource(R.drawable.ic_eye_slash);
-            }
-            password2.setSelection(password2.getText().length());
-            isPassword2Visible = !isPassword2Visible;
-        });
+    private void handleSubmit() {
+        String email = emailInput.getText().toString().trim();
+        String pass1 = password1.getText().toString();
+        String pass2 = password2.getText().toString();
 
-        // 7) (Optional) Submit button stub
-        Button submit = findViewById(R.id.submitButton);
-        submit.setOnClickListener(v -> {
-            String p1 = password1.getText().toString();
-            String p2 = password2.getText().toString();
-            // TODO: validate and send to your backend
-        });
+        if (email.isEmpty() || !Patterns.EMAIL_ADDRESS.matcher(email).matches()) {
+            emailInput.setError("Valid email required");
+            return;
+        }
+        if (pass1.isEmpty() || pass2.isEmpty()) {
+            Toast.makeText(this, "Password cannot be empty", Toast.LENGTH_SHORT).show();
+            return;
+        }
+        if (!pass1.equals(pass2)) {
+            Toast.makeText(this, "Passwords don't match", Toast.LENGTH_SHORT).show();
+            return;
+        }
 
-
-        AppDatabase db = AppDatabase.getInstance(this.getApplication());
-        Executors.newSingleThreadExecutor().execute(() -> {
-            String newPass = "";
-            db.userDao().updatePassword(emailInput.getText().toString(), newPass);
+        // update password in background
+        executor.execute(() -> {
+            userDao.updatePassword(email, pass1);
             runOnUiThread(() ->
-                    Toast.makeText(this, "Password updated", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(ForgotPasswordPage.this, "Password updated", Toast.LENGTH_SHORT).show()
             );
         });
     }
 
-    /** Helper to turn a disabled XML field into a real password input */
     private void enablePasswordField(EditText et) {
         et.setEnabled(true);
         et.setFocusable(true);
         et.setFocusableInTouchMode(true);
         et.setCursorVisible(true);
-        et.setInputType(InputType.TYPE_CLASS_TEXT
-                | InputType.TYPE_TEXT_VARIATION_PASSWORD);
+        et.setInputType(InputType.TYPE_CLASS_TEXT | InputType.TYPE_TEXT_VARIATION_PASSWORD);
         et.setTransformationMethod(PasswordTransformationMethod.getInstance());
+    }
+
+    @Override
+    protected void onDestroy() {
+        super.onDestroy();
+        executor.shutdown();
     }
 }

@@ -6,4 +6,5 @@
     <color name="text_color">#FF000000</color>
     <color name="bg_color">#FFFFFFFF</color>
     <color name="grey">#999999</color>
+    <color name="navy_blue">#2563EB</color>
 </resources>
