@@ -16,6 +16,7 @@ import androidx.fragment.app.Fragment;
 import com.cerenio.flashcards.FlashcardsActivity;
 import com.cerenio.notes.NotesActivity;
 import com.cerenio.planner.PlannerActivity;
+import com.cerenio.profile.ProfileActivity;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -30,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         ViewCompat.setOnApplyWindowInsetsListener(findViewById(R.id.main), (v, insets) -> {
             Insets systemBars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
@@ -55,6 +57,10 @@ public class MainActivity extends AppCompatActivity {
         // Opens Planner Window
         navPlanner.setOnClickListener(v -> {
             startActivity(new Intent(MainActivity.this, PlannerActivity.class));
+        });
+
+        navProfile.setOnClickListener(v -> {
+            startActivity(new Intent(MainActivity.this, ProfileActivity.class));
         });
 
 
