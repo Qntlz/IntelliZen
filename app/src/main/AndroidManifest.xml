@@ -28,7 +28,7 @@
         <activity android:name="com.cerenio.planner.PlannerActivity"
             android:parentActivityName=".MainActivity">
         </activity>
-        <activity android:name="com.cerenio.signup.LoginPage"
+        <activity android:name="com.cerenio.signup.LoginActivity"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

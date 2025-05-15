@@ -90,14 +90,14 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif"
                 android:text="Email"
-                android:textColor="@color/text_color"
+                android:textColor="@color/navy_blue"
                 android:textSize="12sp"
                 android:textStyle="bold"
-            />
+                />
 
             <!-- Email input -->
             <EditText
-                android:id="@+id/email_input"
+                android:id="@+id/emailEditText"
                 android:layout_width="match_parent"
                 android:layout_height="40dp"
                 android:fontFamily="sans-serif"
@@ -117,18 +117,18 @@
                 android:layout_marginBottom="4dp"
                 android:fontFamily="sans-serif"
                 android:text="Password"
-                android:textColor="@color/text_color"
+                android:textColor="@color/navy_blue"
                 android:textSize="12sp"
                 android:textStyle="bold"
-            />
+                />
 
-            <!-- Password input with eye icon -->
-            <RelativeLayout
+            <!-- Password input -->
+            <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="40dp">
 
                 <EditText
-                    android:id="@+id/password_input"
+                    android:id="@+id/passwordEditText"
                     android:layout_width="match_parent"
                     android:layout_height="match_parent"
                     android:fontFamily="sans-serif"
@@ -138,19 +138,9 @@
                     android:textSize="14sp"
                     android:backgroundTint="@color/text_color"/>
 
-                <ImageButton
-                    android:id="@+id/toggle_password_visibility"
-                    android:layout_width="24dp"
-                    android:layout_height="24dp"
-                    android:layout_alignParentEnd="true"
-                    android:background="@android:color/transparent"
-                    android:contentDescription="Toggle password visibility"
-                    android:padding="0dp"
-                    android:src="@drawable/ic_eye_slash"
-                    app:tint="@color/text_color" />
-            </RelativeLayout>
+            </LinearLayout>
 
-            <!-- Remember me and forgot password -->
+            <!-- Forgot password & Sign Up -->
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
@@ -159,7 +149,7 @@
                 android:orientation="horizontal">
 
                 <TextView
-                    android:id="@+id/forgot_password"
+                    android:id="@+id/forgotPasswordTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -167,10 +157,10 @@
                     android:text="Forgot Password ?"
                     android:textColor="@color/navy_blue"
                     android:textSize="12sp"
-                />
+                    />
 
                 <TextView
-                    android:id="@+id/signUp"
+                    android:id="@+id/signUpTextView"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
                     android:fontFamily="sans-serif-medium"
@@ -179,12 +169,12 @@
                     android:textColor="@color/navy_blue"
                     android:textSize="12sp"
                     android:layout_weight="1"
-                />
+                    />
             </LinearLayout>
 
             <!-- Log In button -->
             <Button
-                android:id="@+id/login_button"
+                android:id="@+id/loginButton"
                 android:layout_width="match_parent"
                 android:layout_height="44dp"
                 android:layout_marginTop="24dp"
@@ -242,7 +232,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                />
+                    />
 
                 <!-- FB -->
                 <ImageView
@@ -251,7 +241,7 @@
                     android:layout_width="50dp"
                     android:layout_height="50dp"
                     android:layout_weight="1"
-                />
+                    />
 
                 <!-- WhatsApp -->
                 <ImageView

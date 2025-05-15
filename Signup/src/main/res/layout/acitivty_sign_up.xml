@@ -46,7 +46,7 @@
         android:textSize="12sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/formContainer"
-    />
+        />
 
 
     <!-- Form container -->
@@ -66,7 +66,7 @@
         android:paddingEnd="12dp"
         android:paddingBottom="8dp"
         app:layout_constraintTop_toBottomOf="@id/titleText"
-        app:layout_constraintBottom_toTopOf="@+id/registerButton"
+        app:layout_constraintBottom_toTopOf="@+id/signUpButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent">
@@ -83,12 +83,12 @@
             <ImageView
                 android:layout_width="20dp"
                 android:layout_height="20dp"
-                android:backgroundTint="#2563EB"
+                app:tint="#2563EB"
                 android:contentDescription="User icon"
-                android:src="@drawable/ic_user" />
+                android:src="@drawable/user" />
 
             <EditText
-                android:id="@+id/usernameInput"
+                android:id="@+id/usernameEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -103,13 +103,6 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E5E7EB"
-        />
-
         <!-- Email input -->
         <LinearLayout
             android:layout_width="match_parent"
@@ -123,11 +116,11 @@
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:contentDescription="Email icon"
-                android:src="@drawable/ic_email"
-                app:tint="#2563EB" />
+                android:src="@drawable/email"
+                app:tint="#2563EB"/>
 
             <EditText
-                android:id="@+id/emailInput"
+                android:id="@+id/emailEditText"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
@@ -142,65 +135,8 @@
                 android:textSize="14sp" />
         </LinearLayout>
 
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E5E7EB" />
-
-        <!-- Date of Birth input -->
-        <RelativeLayout
-            android:layout_width="match_parent"
-            android:layout_height="48dp"
-            android:gravity="center_vertical"
-            android:paddingStart="8dp"
-            android:paddingEnd="8dp">
-
-            <ImageView
-                android:id="@+id/calendarIconLeft"
-                android:layout_width="20dp"
-                android:layout_height="20dp"
-                android:layout_centerVertical="true"
-                android:contentDescription="Calendar icon"
-                android:src="@drawable/ic_calendar"
-                app:tint="#2563EB" />
-
-            <EditText
-                android:id="@+id/dobInput"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/calendarIconRight"
-                android:layout_toEndOf="@id/calendarIconLeft"
-                android:background="@android:color/transparent"
-                android:fontFamily="sans-serif"
-                android:hint="Date of Birth"
-                android:inputType="date"
-                android:paddingStart="12dp"
-                android:paddingEnd="12dp"
-                android:textColor="@color/text_color"
-                android:textColorHint="@color/text_color"
-                android:textSize="14sp" />
-
-            <ImageView
-                android:id="@+id/calendarIconRight"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                android:contentDescription="Calendar icon right"
-                android:src="@drawable/ic_calendar"
-                app:tint="#D1D5DB" />
-        </RelativeLayout>
-
-        <!-- Divider -->
-        <View
-            android:layout_width="match_parent"
-            android:layout_height="1dp"
-            android:background="#E5E7EB" />
-
         <!-- Password input -->
-        <RelativeLayout
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="48dp"
             android:gravity="center_vertical"
@@ -208,21 +144,18 @@
             android:paddingEnd="8dp">
 
             <ImageView
-                android:id="@+id/lockIcon"
                 android:layout_width="20dp"
                 android:layout_height="20dp"
                 android:layout_centerVertical="true"
                 android:contentDescription="Lock icon"
-                android:src="@drawable/ic_lock"
-                app:tint="#3B6CF7" />
+                android:src="@drawable/key"
+                app:tint="#3B6CF7"/>
 
             <EditText
-                android:id="@+id/passwordInput"
+                android:id="@+id/passwordEditText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:layout_toStartOf="@id/passwordToggle"
-                android:layout_toEndOf="@id/lockIcon"
                 android:background="@android:color/transparent"
                 android:fontFamily="sans-serif"
                 android:hint="Password"
@@ -232,23 +165,46 @@
                 android:textColor="@color/text_color"
                 android:textColorHint="@color/text_color"
                 android:textSize="14sp" />
+        </LinearLayout>
 
-            <ImageButton
-                android:id="@+id/passwordToggle"
-                android:layout_width="16dp"
-                android:layout_height="16dp"
-                android:layout_alignParentEnd="true"
+        <!-- Confirm Password -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:gravity="center_vertical"
+            android:paddingStart="8dp"
+            android:paddingEnd="8dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_centerVertical="true"
+                android:contentDescription="Lock icon"
+                android:src="@drawable/key"
+                app:tint="#3B6CF7" />
+
+            <EditText
+                android:id="@+id/confirmPasswordEditText"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
                 android:background="@android:color/transparent"
-                android:contentDescription="Toggle password visibility"
-                android:src="@drawable/ic_eye_slash"
-                app:tint="#D1D5DB" />
-        </RelativeLayout>
+                android:fontFamily="sans-serif"
+                android:hint="Confirm Password"
+                android:inputType="textPassword"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp"
+                android:textColor="@color/text_color"
+                android:textColorHint="@color/text_color"
+                android:textSize="14sp" />
+
+
+        </LinearLayout>
     </LinearLayout>
 
     <!-- Register button -->
     <Button
-        android:id="@+id/registerButton"
+        android:id="@+id/signUpButton"
         android:layout_width="0dp"
         android:layout_height="48dp"
 
@@ -258,7 +214,7 @@
         android:backgroundTint="#2563EB"
         android:fontFamily="sans-serif"
         android:gravity="center"
-        android:text="Register"
+        android:text="Sign Up"
         android:textColor="#FFFFFF"
         android:textSize="14sp"
         android:textStyle="normal"
@@ -273,7 +229,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
-        android:layout_marginEnd="20dp"
+        android:layout_marginStart="20dp"
         android:clickable="true"
         android:focusable="true"
         android:fontFamily="sans-serif"
@@ -281,8 +237,7 @@
         android:textColor="#3B6CF7"
         android:textSize="12sp"
         android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-
+        app:layout_constraintStart_toEndOf="@id/subtitleText"
         app:layout_constraintTop_toBottomOf="@id/formContainer" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
